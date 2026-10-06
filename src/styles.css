@@ -1,0 +1,98 @@
+@import "tailwindcss" source("../");
+
+@theme {
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-sans: 'Schibsted Grotesk', ui-sans-serif, sans-serif;
+
+  --color-limestone: #f4efe4;
+  --color-sand: #e8dfcc;
+  --color-stone: #cfc3aa;
+  --color-cedar: #1d3328;
+  --color-cedar-800: #26443a;
+  --color-cedar-600: #3d6152;
+  --color-moss: #6f8a5b;
+  --color-ink: #1b1a17;
+  --color-clay: #b85a32;
+  --color-clay-600: #9c4826;
+
+  --color-easy: #3f8a4e;
+  --color-moderate: #d9861c;
+  --color-hard: #c0392b;
+}
+
+html {
+  background: var(--color-limestone);
+  color: var(--color-ink);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle paper grain over the whole page */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.font-display {
+  font-variation-settings: 'SOFT' 50, 'WONK' 0;
+}
+
+/* Topographic contour lines used as section decoration */
+.topo {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 600 600' fill='none' stroke='%231d3328' stroke-opacity='.09' stroke-width='1.2'%3E%3Cpath d='M300 80c120 0 210 70 210 200s-110 230-230 230S80 420 90 300 180 80 300 80z'/%3E%3Cpath d='M300 130c95 0 165 55 165 155s-85 180-180 180-155-75-148-165S205 130 300 130z'/%3E%3Cpath d='M300 180c70 0 120 40 120 110s-60 130-130 130-112-55-106-120S230 180 300 180z'/%3E%3Cpath d='M300 230c45 0 75 25 75 70s-40 80-85 80-70-35-65-75 30-75 75-75z'/%3E%3Cpath d='M300 275c22 0 35 12 35 32s-18 36-40 36-32-16-30-34 13-34 35-34z'/%3E%3C/svg%3E");
+  background-size: 600px 600px;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rise {
+  animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+/* Leaflet tweaks to match the theme */
+.leaflet-container {
+  font-family: var(--font-sans);
+  background: var(--color-sand);
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 14px;
+  box-shadow: 0 12px 30px -10px rgb(29 51 40 / 0.45);
+}
+
+.leaflet-popup-content {
+  margin: 0;
+  width: 240px !important;
+}
+
+.trail-pin {
+  width: 22px;
+  height: 22px;
+  border-radius: 9999px;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.35);
+  transition: transform 0.15s ease;
+}
+
+.trail-pin:hover,
+.trail-pin.is-active {
+  transform: scale(1.35);
+}
