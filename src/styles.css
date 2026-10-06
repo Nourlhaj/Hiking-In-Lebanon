@@ -1,761 +1,62 @@
 @import "tailwindcss" source("../");
 
 @theme {
-  /* ============================================
-     MODERN MEDITERRANEAN PALETTE
-  ============================================ */
-
   --font-display: 'Fraunces', Georgia, serif;
   --font-sans: 'Schibsted Grotesk', ui-sans-serif, sans-serif;
 
-  /* Backgrounds */
-  --color-cream: #faf7f2;
-  --color-white: #ffffff;
-  --color-soft: #f1ece5;
-  --color-sand: #e6ddd1;
+  --color-limestone: #f4efe4;
+  --color-sand: #e8dfcc;
+  --color-stone: #cfc3aa;
+  --color-cedar: #1d3328;
+  --color-cedar-800: #26443a;
+  --color-cedar-600: #3d6152;
+  --color-moss: #6f8a5b;
+  --color-ink: #1b1a17;
+  --color-clay: #b85a32;
+  --color-clay-600: #9c4826;
 
-  /* Primary */
-  --color-navy: #17324d;
-  --color-navy-800: #214562;
-  --color-navy-600: #39627e;
-
-  /* Accent */
-  --color-terracotta: #c96b4b;
-  --color-terracotta-dark: #a95338;
-
-  /* Secondary accent */
-  --color-sky: #7da9bd;
-  --color-sky-light: #dceaf0;
-
-  /* Text */
-  --color-ink: #1d252b;
-  --color-muted: #68737a;
-
-  /* Borders */
-  --color-border: #e2dcd4;
-
-  /* Difficulty */
-  --color-easy: #3d8b61;
-  --color-moderate: #d48a2c;
-  --color-hard: #c9534b;
+  --color-easy: #3f8a4e;
+  --color-moderate: #d9861c;
+  --color-hard: #c0392b;
 }
 
-
-/* ============================================
-   BASE
-============================================ */
-
 html {
-  background: var(--color-cream);
+  background: var(--color-limestone);
   color: var(--color-ink);
-  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
-  min-height: 100vh;
-
   font-family: var(--font-sans);
-
-  background:
-    radial-gradient(
-      circle at 0% 0%,
-      rgba(125, 169, 189, 0.10),
-      transparent 30%
-    ),
-    radial-gradient(
-      circle at 100% 20%,
-      rgba(201, 107, 75, 0.08),
-      transparent 30%
-    ),
-    var(--color-cream);
-
   -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
 }
 
+/* Subtle paper grain over the whole page */
 body::before {
   content: '';
-
   position: fixed;
   inset: 0;
-
   pointer-events: none;
   z-index: 60;
-
-  opacity: 0.025;
-
+  opacity: 0.05;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-
-/* ============================================
-   TYPOGRAPHY
-============================================ */
-
 .font-display {
-  font-family: var(--font-display);
-
-  font-variation-settings:
-    'SOFT' 50,
-    'WONK' 0;
-
-  letter-spacing: -0.025em;
+  font-variation-settings: 'SOFT' 50, 'WONK' 0;
 }
 
-h1,
-h2,
-h3,
-h4 {
-  text-wrap: balance;
-}
-
-p {
-  line-height: 1.65;
-}
-
-
-/* ============================================
-   TOPOGRAPHIC DECORATION
-============================================ */
-
+/* Topographic contour lines used as section decoration */
 .topo {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 600 600' fill='none' stroke='%2317324d' stroke-opacity='.07' stroke-width='1.2'%3E%3Cpath d='M300 80c120 0 210 70 210 200s-110 230-230 230S80 420 90 300 180 80 300 80z'/%3E%3Cpath d='M300 130c95 0 165 55 165 155s-85 180-180 180-155-75-148-165S205 130 300 130z'/%3E%3Cpath d='M300 180c70 0 120 40 120 110s-60 130-130 130-112-55-106-120S230 180 300 180z'/%3E%3Cpath d='M300 230c45 0 75 25 75 70s-40 80-85 80-70-35-65-75 30-75 75-75z'/%3E%3Cpath d='M300 275c22 0 35 12 35 32s-18 36-40 36-32-16-30-34 13-34 35-34z'/%3E%3C/svg%3E");
-
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 600 600' fill='none' stroke='%231d3328' stroke-opacity='.09' stroke-width='1.2'%3E%3Cpath d='M300 80c120 0 210 70 210 200s-110 230-230 230S80 420 90 300 180 80 300 80z'/%3E%3Cpath d='M300 130c95 0 165 55 165 155s-85 180-180 180-155-75-148-165S205 130 300 130z'/%3E%3Cpath d='M300 180c70 0 120 40 120 110s-60 130-130 130-112-55-106-120S230 180 300 180z'/%3E%3Cpath d='M300 230c45 0 75 25 75 70s-40 80-85 80-70-35-65-75 30-75 75-75z'/%3E%3Cpath d='M300 275c22 0 35 12 35 32s-18 36-40 36-32-16-30-34 13-34 35-34z'/%3E%3C/svg%3E");
   background-size: 600px 600px;
-  background-position: center;
 }
-
-
-/* ============================================
-   NAVIGATION
-============================================ */
-
-.navbar {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-
-  background: rgba(250, 247, 242, 0.88);
-
-  border-bottom: 1px solid rgba(226, 220, 212, 0.8);
-
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-
-  box-shadow:
-    0 4px 20px rgba(23, 50, 77, 0.05);
-}
-
-.nav-link {
-  position: relative;
-
-  color: var(--color-muted);
-
-  font-weight: 600;
-  text-decoration: none;
-
-  transition:
-    color 0.2s ease;
-}
-
-.nav-link::after {
-  content: '';
-
-  position: absolute;
-  left: 50%;
-  bottom: -7px;
-
-  width: 0;
-  height: 2px;
-
-  background: var(--color-terracotta);
-
-  border-radius: 999px;
-
-  transform: translateX(-50%);
-
-  transition: width 0.25s ease;
-}
-
-.nav-link:hover,
-.nav-link.active {
-  color: var(--color-navy);
-}
-
-.nav-link:hover::after,
-.nav-link.active::after {
-  width: 70%;
-}
-
-
-/* ============================================
-   CARDS
-============================================ */
-
-.card {
-  background: rgba(255, 255, 255, 0.88);
-
-  border: 1px solid var(--color-border);
-
-  border-radius: 20px;
-
-  box-shadow:
-    0 2px 4px rgba(23, 50, 77, 0.03),
-    0 12px 30px rgba(23, 50, 77, 0.07);
-
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
-    border-color 0.25s ease;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-
-  border-color: rgba(125, 169, 189, 0.5);
-
-  box-shadow:
-    0 4px 8px rgba(23, 50, 77, 0.04),
-    0 22px 45px rgba(23, 50, 77, 0.12);
-}
-
-
-/* Image inside cards */
-
-.card-image {
-  overflow: hidden;
-
-  border-radius: 18px 18px 0 0;
-}
-
-.card-image img {
-  display: block;
-
-  width: 100%;
-
-  transition:
-    transform 0.5s ease;
-}
-
-.card:hover .card-image img {
-  transform: scale(1.04);
-}
-
-
-/* ============================================
-   BUTTONS
-============================================ */
-
-.btn-primary {
-  display: inline-flex;
-
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-
-  min-height: 46px;
-
-  padding: 0.7rem 1.2rem;
-
-  border: none;
-  border-radius: 12px;
-
-  background: var(--color-navy);
-  color: white;
-
-  font-weight: 650;
-
-  cursor: pointer;
-
-  box-shadow:
-    0 7px 16px rgba(23, 50, 77, 0.18);
-
-  transition:
-    transform 0.2s ease,
-    background 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.btn-primary:hover {
-  background: var(--color-navy-800);
-
-  transform: translateY(-2px);
-
-  box-shadow:
-    0 12px 24px rgba(23, 50, 77, 0.22);
-}
-
-.btn-primary:active {
-  transform: translateY(0);
-}
-
-
-/* Secondary */
-
-.btn-secondary {
-  display: inline-flex;
-
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-
-  min-height: 46px;
-
-  padding: 0.7rem 1.2rem;
-
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
-
-  background: white;
-  color: var(--color-navy);
-
-  font-weight: 650;
-
-  cursor: pointer;
-
-  transition:
-    transform 0.2s ease,
-    background 0.2s ease,
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.btn-secondary:hover {
-  background: var(--color-soft);
-
-  border-color: var(--color-sky);
-
-  transform: translateY(-2px);
-
-  box-shadow:
-    0 8px 18px rgba(23, 50, 77, 0.08);
-}
-
-
-/* Terracotta CTA */
-
-.btn-accent {
-  display: inline-flex;
-
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-
-  min-height: 46px;
-
-  padding: 0.7rem 1.2rem;
-
-  border: none;
-  border-radius: 12px;
-
-  background: var(--color-terracotta);
-  color: white;
-
-  font-weight: 650;
-
-  cursor: pointer;
-
-  box-shadow:
-    0 8px 18px rgba(201, 107, 75, 0.20);
-
-  transition:
-    transform 0.2s ease,
-    background 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.btn-accent:hover {
-  background: var(--color-terracotta-dark);
-
-  transform: translateY(-2px);
-
-  box-shadow:
-    0 12px 24px rgba(201, 107, 75, 0.25);
-}
-
-
-/* ============================================
-   INPUTS
-============================================ */
-
-.input {
-  width: 100%;
-  min-height: 46px;
-
-  box-sizing: border-box;
-
-  padding: 0.7rem 0.9rem;
-
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
-
-  background: white;
-
-  color: var(--color-ink);
-
-  font-family: inherit;
-  font-size: 0.95rem;
-
-  outline: none;
-
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease,
-    background 0.2s ease;
-}
-
-.input::placeholder {
-  color: #92999e;
-}
-
-.input:hover {
-  border-color: #c7d2d8;
-}
-
-.input:focus {
-  border-color: var(--color-sky);
-
-  box-shadow:
-    0 0 0 4px rgba(125, 169, 189, 0.15);
-}
-
-.input:disabled {
-  background: var(--color-soft);
-
-  cursor: not-allowed;
-
-  opacity: 0.65;
-}
-
-
-/* ============================================
-   SEARCH BAR
-============================================ */
-
-.search-box {
-  display: flex;
-
-  align-items: center;
-
-  gap: 0.65rem;
-
-  min-height: 50px;
-
-  padding: 0 1rem;
-
-  background: white;
-
-  border: 1px solid var(--color-border);
-
-  border-radius: 14px;
-
-  box-shadow:
-    0 8px 25px rgba(23, 50, 77, 0.07);
-
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.search-box:focus-within {
-  border-color: var(--color-sky);
-
-  box-shadow:
-    0 0 0 4px rgba(125, 169, 189, 0.13),
-    0 10px 25px rgba(23, 50, 77, 0.08);
-}
-
-.search-box input {
-  flex: 1;
-
-  border: none;
-  outline: none;
-
-  background: transparent;
-
-  color: var(--color-ink);
-}
-
-
-/* ============================================
-   BADGES
-============================================ */
-
-.badge {
-  display: inline-flex;
-
-  align-items: center;
-  gap: 0.35rem;
-
-  padding: 0.4rem 0.7rem;
-
-  border-radius: 999px;
-
-  font-size: 0.76rem;
-
-  font-weight: 700;
-
-  line-height: 1;
-}
-
-.badge-easy {
-  background: rgba(61, 139, 97, 0.12);
-  color: var(--color-easy);
-}
-
-.badge-moderate {
-  background: rgba(212, 138, 44, 0.14);
-  color: #a96613;
-}
-
-.badge-hard {
-  background: rgba(201, 83, 75, 0.12);
-  color: var(--color-hard);
-}
-
-
-/* ============================================
-   FILTER BUTTONS
-============================================ */
-
-.filter-btn {
-  padding: 0.55rem 0.9rem;
-
-  border: 1px solid var(--color-border);
-  border-radius: 999px;
-
-  background: white;
-  color: var(--color-muted);
-
-  font-size: 0.85rem;
-  font-weight: 600;
-
-  cursor: pointer;
-
-  transition:
-    background 0.2s ease,
-    color 0.2s ease,
-    border-color 0.2s ease,
-    transform 0.2s ease;
-}
-
-.filter-btn:hover {
-  border-color: var(--color-sky);
-
-  color: var(--color-navy);
-
-  transform: translateY(-1px);
-}
-
-.filter-btn.active {
-  background: var(--color-navy);
-
-  border-color: var(--color-navy);
-
-  color: white;
-}
-
-
-/* ============================================
-   MAP
-============================================ */
-
-.leaflet-container {
-  font-family: var(--font-sans);
-
-  background: var(--color-soft);
-
-  border-radius: 20px;
-
-  overflow: hidden;
-
-  box-shadow:
-    0 12px 30px rgba(23, 50, 77, 0.10);
-}
-
-
-/* Map controls */
-
-.leaflet-control-zoom {
-  border: none !important;
-
-  border-radius: 12px !important;
-
-  overflow: hidden;
-
-  box-shadow:
-    0 8px 20px rgba(23, 50, 77, 0.14) !important;
-}
-
-.leaflet-control-zoom a {
-  width: 38px !important;
-  height: 38px !important;
-
-  display: flex !important;
-
-  align-items: center;
-  justify-content: center;
-
-  background: white !important;
-
-  color: var(--color-navy) !important;
-
-  border: none !important;
-
-  transition:
-    background 0.2s ease,
-    color 0.2s ease;
-}
-
-.leaflet-control-zoom a:hover {
-  background: var(--color-navy) !important;
-
-  color: white !important;
-}
-
-
-/* ============================================
-   MAP POPUPS
-============================================ */
-
-.leaflet-popup-content-wrapper {
-  padding: 0 !important;
-
-  overflow: hidden;
-
-  border-radius: 16px;
-
-  background: white;
-
-  box-shadow:
-    0 18px 45px rgba(23, 50, 77, 0.20);
-}
-
-.leaflet-popup-tip {
-  background: white;
-}
-
-.leaflet-popup-content {
-  margin: 0;
-
-  width: 260px !important;
-}
-
-.leaflet-container a.leaflet-popup-close-button {
-  top: 9px;
-  right: 9px;
-
-  width: 30px;
-  height: 30px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 50%;
-
-  background: rgba(255, 255, 255, 0.94);
-
-  color: var(--color-navy);
-
-  font-size: 18px;
-
-  z-index: 5;
-
-  transition:
-    background 0.2s ease,
-    color 0.2s ease;
-}
-
-.leaflet-container a.leaflet-popup-close-button:hover {
-  background: var(--color-navy);
-
-  color: white;
-}
-
-
-/* ============================================
-   TRAIL MARKERS
-============================================ */
-
-.trail-pin {
-  width: 22px;
-  height: 22px;
-
-  border-radius: 50%;
-
-  border: 3px solid white;
-
-  box-shadow:
-    0 4px 12px rgba(23, 50, 77, 0.35);
-
-  cursor: pointer;
-
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.trail-pin:hover,
-.trail-pin.is-active {
-  transform: scale(1.35);
-
-  box-shadow:
-    0 6px 18px rgba(23, 50, 77, 0.40);
-}
-
-
-/* ============================================
-   DIVIDERS
-============================================ */
-
-.divider {
-  height: 1px;
-
-  background:
-    linear-gradient(
-      to right,
-      transparent,
-      var(--color-border),
-      transparent
-    );
-}
-
-
-/* ============================================
-   FOOTER
-============================================ */
-
-.footer {
-  background: var(--color-navy);
-
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.footer a {
-  color: rgba(255, 255, 255, 0.72);
-
-  transition:
-    color 0.2s ease;
-}
-
-.footer a:hover {
-  color: white;
-}
-
-
-/* ============================================
-   ANIMATIONS
-============================================ */
 
 @keyframes rise {
   from {
     opacity: 0;
     transform: translateY(18px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -763,142 +64,35 @@ p {
 }
 
 .rise {
-  animation:
-    rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 
-.hover-lift {
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
+/* Leaflet tweaks to match the theme */
+.leaflet-container {
+  font-family: var(--font-sans);
+  background: var(--color-sand);
 }
 
-.hover-lift:hover {
-  transform: translateY(-4px);
-
-  box-shadow:
-    0 20px 40px rgba(23, 50, 77, 0.12);
+.leaflet-popup-content-wrapper {
+  border-radius: 14px;
+  box-shadow: 0 12px 30px -10px rgb(29 51 40 / 0.45);
 }
 
-
-/* ============================================
-   ACCESSIBILITY
-============================================ */
-
-button,
-a,
-input,
-select,
-textarea {
-  -webkit-tap-highlight-color: transparent;
+.leaflet-popup-content {
+  margin: 0;
+  width: 240px !important;
 }
 
-button:focus-visible,
-a:focus-visible,
-input:focus-visible,
-select:focus-visible,
-textarea:focus-visible {
-  outline: 3px solid rgba(125, 169, 189, 0.5);
-
-  outline-offset: 3px;
+.trail-pin {
+  width: 22px;
+  height: 22px;
+  border-radius: 9999px;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.35);
+  transition: transform 0.15s ease;
 }
 
-button {
-  font-family: inherit;
-}
-
-
-/* ============================================
-   SCROLLBAR
-============================================ */
-
-::-webkit-scrollbar {
-  width: 9px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--color-cream);
-}
-
-::-webkit-scrollbar-thumb {
-  background: #bdc8cd;
-
-  border-radius: 999px;
-
-  border: 2px solid var(--color-cream);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-navy-600);
-}
-
-
-/* ============================================
-   MOBILE
-============================================ */
-
-@media (max-width: 768px) {
-
-  .navbar {
-    backdrop-filter: blur(14px);
-  }
-
-  .card {
-    border-radius: 16px;
-  }
-
-  .leaflet-container {
-    border-radius: 16px;
-  }
-
-  .btn-primary,
-  .btn-secondary,
-  .btn-accent {
-    min-height: 48px;
-  }
-
-  .search-box {
-    min-height: 48px;
-  }
-
-  .nav-link::after {
-    display: none;
-  }
-}
-
-
-@media (max-width: 480px) {
-
-  .card {
-    border-radius: 14px;
-  }
-
-  .btn-primary,
-  .btn-secondary,
-  .btn-accent {
-    width: 100%;
-  }
-
-  .leaflet-popup-content {
-    width: 230px !important;
-  }
-}
-
-
-/* ============================================
-   REDUCED MOTION
-============================================ */
-
-@media (prefers-reduced-motion: reduce) {
-
-  html {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
+.trail-pin:hover,
+.trail-pin.is-active {
+  transform: scale(1.35);
 }
